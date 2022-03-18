@@ -1,0 +1,36 @@
+{
+  
+  "bindings": {
+    "/actions/mixedreality": {
+      "chords": [],
+      "poses" : [
+            {
+               "output" : "none",
+               "path" : "/user/hand/left/pose/gdc2015"
+            },
+            {
+               "output" : "none",
+               "path" : "/user/hand/right/pose/gdc2015"
+            },
+            {
+               "output" : "none",
+               "path" : "/user/hand/left/pose/raw"
+            },
+            {
+               "output" : "none",
+               "path" : "/user/hand/right/pose/raw"
+            },
+            {
+               "output" : "/actions/mixedreality/in/externalcamera",
+               "path" : "/user/camera/pose/raw"
+            }
+         ],
+      "haptics": [],
+      "sources": [],
+      "skeleton": []
+    }
+  },
+  "controller_type": "vive_tracker_camera",
+  "description": "",
+  "name": "tracker_forcamera"
+}
