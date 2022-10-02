@@ -1,0 +1,35 @@
+using System;
+using System.Diagnostics;
+
+public class CPHInline
+{
+    public bool Execute()
+    {
+        Process p = new Process();
+        string deviceName = "LIV Virtual Camera (Controller)";
+        string OvrIE = "C:\\Program Files\\OpenVR-InputEmulator\\client-commandline\\client_commandline.exe";
+
+        p.StartInfo.UseShellExecute = false;
+        p.StartInfo.RedirectStandardOutput = true;
+        p.StartInfo.FileName = OvrIE; 
+        p.StartInfo.Arguments = "listdevices";
+        p.Start();
+
+        string output = p.StandardOutput.ReadToEnd();
+        p.WaitForExit();
+
+        string[] devices = output.Split("\n\r".ToCharArray());
+        int deviceNum = -1;
+        foreach (string device in devices)
+        {
+            if (device.Contains(deviceName))
+            {
+                deviceNum = int.Parse(device.Remove(0, 7).Substring(0, 2));
+            }
+        }
+
+        CPH.SetGlobalVar("DeviceNo", deviceNum, false);
+
+        return true;
+    }
+}
